@@ -1,19 +1,20 @@
+import {
+  Plus,
+  FileText,
+  Users,
+  BarChart3,
+  DollarSign,
+  Clock,
+  TrendingUp,
+} from "lucide-react";
+import {useNavigate} from "react-router";
+
 import { Button } from "./ui/button.tsx";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card.tsx";
 import { Badge } from "./ui/badge.tsx";
-import { Avatar, AvatarFallback } from "./ui/avatar.tsx";
-import { 
-  Zap, 
-  Plus, 
-  FileText, 
-  Users, 
-  BarChart3, 
-  Settings, 
-  DollarSign, 
-  Clock,
-  TrendingUp,
-  Bell
-} from "lucide-react";
+import Header from "./common/Header";
+
+import {  ROUTES } from "../Routes/routes.ts";
 
 const recentInvoices = [
   {
@@ -39,71 +40,10 @@ const recentInvoices = [
   }
 ];
 
-export function Dashboard({ onNavigate }: { onNavigate: (page: string) => void }) {
+export function Dashboard() {
+  const onNavigate = useNavigate();
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Top Navigation */}
-      <nav className="bg-white border-b border-gray-200 px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-8">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <Zap className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-xl font-semibold">QuickInvoice</span>
-            </div>
-            
-            <div className="hidden md:flex items-center space-x-6">
-              <Button variant="ghost" className="text-primary font-medium">
-                <FileText className="w-4 h-4 mr-2" />
-                Invoices
-              </Button>
-              <Button 
-                variant="ghost" 
-                className="text-gray-600 hover:text-gray-900"
-                onClick={() => onNavigate('clients')}
-              >
-                <Users className="w-4 h-4 mr-2" />
-                Clients
-              </Button>
-              <Button 
-                variant="ghost" 
-                className="text-gray-600 hover:text-gray-900"
-                onClick={() => onNavigate('reports')}
-              >
-                <BarChart3 className="w-4 h-4 mr-2" />
-                Reports
-              </Button>
-              <Button 
-                variant="ghost" 
-                className="text-gray-600 hover:text-gray-900"
-                onClick={() => onNavigate('settings')}
-              >
-                <Settings className="w-4 h-4 mr-2" />
-                Settings
-              </Button>
-            </div>
-          </div>
-          
-          <div className="flex items-center space-x-4">
-            <Button 
-              className="bg-primary hover:bg-primary/90"
-              onClick={() => onNavigate('create-invoice')}
-            >
-              <Plus className="w-4 h-4 mr-2" />
-              New Invoice
-            </Button>
-            <Button variant="ghost" size="sm">
-              <Bell className="w-5 h-5" />
-            </Button>
-            <Avatar>
-              <AvatarFallback>JS</AvatarFallback>
-            </Avatar>
-          </div>
-        </div>
-      </nav>
-
-      {/* Main Content */}
       <main className="p-6">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
@@ -209,7 +149,7 @@ export function Dashboard({ onNavigate }: { onNavigate: (page: string) => void }
                 <Button 
                   variant="outline" 
                   className="w-full justify-start h-auto py-4"
-                  onClick={() => onNavigate('create-invoice')}
+                  onClick={() => onNavigate(ROUTES.CREATE_INVOICE)}
                 >
                   <div className="flex items-center">
                     <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mr-3">
@@ -225,7 +165,7 @@ export function Dashboard({ onNavigate }: { onNavigate: (page: string) => void }
                 <Button 
                   variant="outline" 
                   className="w-full justify-start h-auto py-4"
-                  onClick={() => onNavigate('clients')}
+                  onClick={() => onNavigate(ROUTES.CLIENTS)}
                 >
                   <div className="flex items-center">
                     <div className="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center mr-3">
@@ -241,7 +181,7 @@ export function Dashboard({ onNavigate }: { onNavigate: (page: string) => void }
                 <Button 
                   variant="outline" 
                   className="w-full justify-start h-auto py-4"
-                  onClick={() => onNavigate('reports')}
+                  onClick={() => onNavigate(ROUTES.REPORTS)}
                 >
                   <div className="flex items-center">
                     <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center mr-3">

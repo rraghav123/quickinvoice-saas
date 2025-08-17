@@ -85,26 +85,7 @@ const testimonials = [
 
 export function LandingPage({ onNavigate }: { onNavigate: (page: string) => void }) {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="border-b border-gray-100 px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <Zap className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl font-semibold">QuickInvoice</span>
-          </div>
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="#features" className="text-gray-600 hover:text-gray-900">Features</a>
-            <a href="#pricing" className="text-gray-600 hover:text-gray-900">Pricing</a>
-            <a href="#testimonials" className="text-gray-600 hover:text-gray-900">Reviews</a>
-            <Button variant="outline" onClick={() => onNavigate('dashboard')}>Sign In</Button>
-            <Button onClick={() => onNavigate('dashboard')}>Get Started</Button>
-          </div>
-        </div>
-      </nav>
-
+    <div>
       {/* Hero Section */}
       <section className="px-6 py-20 lg:py-32">
         <div className="max-w-7xl mx-auto">
