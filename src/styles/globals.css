@@ -1,91 +1,190 @@
 @custom-variant dark (&:is(.dark *));
 @import "tailwindcss";
-
 :root {
-  --font-size: 14px;
-  --background: #ffffff;
-  --foreground: oklch(0.145 0 0);
-  --card: #ffffff;
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: #4F46E5;
-  --primary-foreground: oklch(1 0 0);
-  --secondary: #6366F1;
-  --secondary-foreground: #ffffff;
-  --muted: #ececf0;
-  --muted-foreground: #717182;
-  --accent: #F59E0B;
-  --accent-foreground: #ffffff;
-  --destructive: #d4183d;
-  --destructive-foreground: #ffffff;
-  --border: rgba(0, 0, 0, 0.1);
-  --input: transparent;
+  --radius: 6px;
+  /* === App Base === */
+  --background: #ffffff;                  /* Dark background (e.g., body background) */
+  --foreground: oklch(0.145 0 0);                 /* Light foreground text on dark background */
+
+  /* === Card === */
+  --card: #ffffff;                        /* Card background (same as background here) */
+  --card-foreground:  oklch(0.145 0 0);             /* Card text color */
+  --card-foreground-secondary: var(--color-gray-600);
+
+  /* === Popover === */
+  --popover: oklch(0.145 0 0);                     /* Popover background */
+  --popover-foreground: oklch(0.985 0 0);          /* Popover text */
+
+  /* === Primary Action (Buttons, CTAs) === */
+  --primary: #4F46E5;                    /* Primary button background (light) */
+  --primary-foreground: oklch(1 0 0);          /* Text color on primary (dark) */
+
+  --secondary-background: var(--color-gray-50);   /* Dark background (e.g., different section background) */
+
+  /* === Secondary Action === */
+  --secondary: #6366F1;                   /* Secondary button background (medium) */
+  --secondary-foreground: #ffffff;       /* Text on secondary button */
+
+  /* === Muted (Placeholder, Inactive) === */
+  --muted: #ececf0;                       /* Muted background */
+  --muted-foreground: #717182;            /* Muted text color */
+
+  /* === Accent (Tabs, Switches, Links) === */
+  --accent: #F59E0B;                      /* Accent background or element */
+  --accent-foreground: #ffffff;        /* Text on accent */
+
+  /* === Destructive (Errors, Danger) === */
+  --destructive: oklch(0.396 0.141 25.723);        /* Red background for error/danger */
+  --destructive-foreground: oklch(0.637 0.237 25.331); /* Text on destructive */
+
+  /* === Borders / Inputs === */
+  --border: oklch(0.269 0 0);                      /* Standard border color */
+  --input: oklch(0.269 0 0);                       /* Input background or border */
+  --ring: oklch(0.439 0 0);                        /* Focus ring color */
+
+  /* === Typography === */
+  --font-weight-medium: 500;                       /* Used for buttons, headings */
+  --font-weight-normal: 400;                       /* Default body font weight */
   --input-background: #f3f3f5;
-  --switch-background: #cbced4;
-  --font-weight-medium: 500;
-  --font-weight-normal: 400;
-  --ring: #4F46E5;
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 8px;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: #4F46E5;
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: #4F46E5;
+  --switch-background: oklch(0.25 0 0);
+
+  /* === Chart Colors === */
+  --chart-1: oklch(0.488 0.243 264.376);           /* Chart line/bar 1 (blue) */
+  --chart-2: oklch(0.696 0.17 162.48);             /* Chart line/bar 2 (green) */
+  --chart-3: oklch(0.769 0.188 70.08);             /* Chart line/bar 3 (yellow) */
+  --chart-4: oklch(0.627 0.265 303.9);             /* Chart line/bar 4 (purple) */
+  --chart-5: oklch(0.645 0.246 16.439);            /* Chart line/bar 5 (orange/red) */
+
+  /* === Sidebar === */
+  --sidebar: oklch(0.985 0 0);                     /* Sidebar background */
+  --sidebar-foreground: oklch(0.145 0 0);          /* Sidebar text color */
+  --sidebar-primary: #4F46E5;   /* Active tab highlight */
+  --sidebar-primary-foreground: oklch(0.985 0 0); /* Text on active tab */
+  --sidebar-accent: oklch(0.97 0 0);             /* Hover or decorative accents */
+  --sidebar-accent-foreground: oklch(0.205 0 0);   /* Text on sidebar accents */
+  --sidebar-border: oklch(0.922 0 0);              /* Divider lines */
+  --sidebar-ring: #4F46E5;                /* Focus ring in sidebar */
+
+  /* === Badge === */
+  --badge-default: oklch(0.95 0 0);             /* Neutral gray background */
+  --badge-default-foreground: oklch(0.35 0 0);  /* Neutral text */
+
+  --badge-primary: oklch(0.92 0.15 264);        /* Indigo tint */
+  --badge-primary-foreground: oklch(0.35 0.05 264);
+
+  --badge-secondary: oklch(0.92 0.12 300);      /* Purple tint */
+  --badge-secondary-foreground: oklch(0.35 0.05 300);
+
+  --badge-success: oklch(0.92 0.15 145);        /* Green tint */
+  --badge-success-foreground: oklch(0.3 0.05 145);
+
+  --badge-warning: oklch(0.95 0.18 90);         /* Yellow tint */
+  --badge-warning-foreground: oklch(0.35 0.1 90);
+
+  --badge-danger: oklch(0.92 0.2 25);           /* Red tint */
+  --badge-danger-foreground: oklch(0.35 0.1 25);
+
+  --badge-info: oklch(0.92 0.16 230);           /* Blue tint */
+  --badge-info-foreground: oklch(0.35 0.1 230);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-  --font-weight-medium: 500;
-  --font-weight-normal: 400;
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+  /* === App Base === */
+  --background: var(--color-gray-950);                 /* Dark background (e.g., body background) */
+  --foreground: oklch(0.985 0 0);                 /* Light foreground text on dark background */
+
+  --secondary-background: var(--color-gray-900);   /* Dark background (e.g., different section background) */
+
+  /* === Card === */
+  --card:  color-mix(in oklab, var(--color-gray-950) 50%, transparent);;                       /* Card background */
+  --card-foreground: oklch(0.985 0 0);            /* Card text color */
+  --card-secondary: var(--color-gray-400);
+
+  /* === Popover === */
+  --popover: oklch(0.145 0 0);                    /* Popover background */
+  --popover-foreground: oklch(0.985 0 0);         /* Popover text */
+
+  /* === Primary Action === */
+  --primary: oklch(0.617 0.209 277.447);                    /* Primary button (e.g., CTAs) */
+  --primary-foreground: oklch(0.98 0 0);         /* Text on primary */
+
+  /* === Secondary Action === */
+  --secondary: oklch(0.269 0 0);                  /* Secondary button background */
+  --secondary-foreground: oklch(0.985 0 0);       /* Text on secondary */
+
+  /* === Muted / Disabled === */
+  --muted: oklch(0.269 0 0);                      /* Muted background (e.g., disabled) */
+  --muted-foreground: oklch(0.708 0 0);           /* Muted text */
+
+  /* === Accent (Tabs, Switches) === */
+  --accent: oklch(0.269 0 0);                     /* Accent background */
+  --accent-foreground: oklch(0.985 0 0);          /* Text on accent */
+
+  /* === Destructive (Errors, Warnings) === */
+  --destructive: oklch(0.396 0.141 25.723);       /* Destructive background (red) */
+  --destructive-foreground: oklch(0.637 0.237 25.331); /* Text on destructive */
+
+  /* === Borders & Inputs === */
+  --border: oklch(0.269 0 0);                     /* Border color */
+  --input: oklch(0.269 0 0);                      /* Input field border or background */
+  --ring: oklch(0.439 0 0);                       /* Focus ring color */
+
+  /* === Typography === */
+  --font-weight-medium: 500;                      /* For medium-weight text like headings */
+  --font-weight-normal: 400;                      /* For regular body text */
+  --input-background: oklch(0.2 0 0);
+  --switch-background: oklch(0.25 0 0);
+
+  /* === Charts (Graph series colors) === */
+  --chart-1: oklch(0.488 0.243 264.376);          /* Blue */
+  --chart-2: oklch(0.696 0.17 162.48);            /* Green */
+  --chart-3: oklch(0.769 0.188 70.08);            /* Yellow */
+  --chart-4: oklch(0.627 0.265 303.9);            /* Purple */
+  --chart-5: oklch(0.645 0.246 16.439);           /* Orange/Red */
+
+  /* === Sidebar === */
+  --sidebar: var(--color-gray-950);                    /* Sidebar background */
+  --sidebar-foreground: oklch(0.985 0 0);         /* Sidebar text */
+  --sidebar-primary: oklch(0.488 0.243 264.376);  /* Active tab or highlight */
+  --sidebar-primary-foreground: oklch(0.985 0 0); /* Text on primary sidebar element */
+  --sidebar-accent: oklch(0.269 0 0);             /* Sidebar hover or accents */
+  --sidebar-accent-foreground: oklch(0.985 0 0);  /* Text on accent */
+  --sidebar-border: oklch(0.269 0 0);             /* Sidebar dividers or borders */
+  --sidebar-ring: oklch(0.439 0 0);               /* Focus ring in sidebar */
+
+  /* === Badges (Dark Mode) === */
+  --badge-default: oklch(0.2 0 0);              /* Dark gray background */
+  --badge-default-foreground: oklch(0.85 0 0);  /* Light gray text */
+
+  --badge-primary: oklch(0.35 0.15 264);        /* Indigo */
+  --badge-primary-foreground: oklch(0.9 0.05 264);
+
+  --badge-secondary: oklch(0.35 0.12 300);      /* Purple */
+  --badge-secondary-foreground: oklch(0.9 0.05 300);
+
+  --badge-success: oklch(0.3 0.15 145);         /* Green */
+  --badge-success-foreground: oklch(0.9 0.05 145);
+
+  --badge-warning: oklch(0.35 0.18 90);         /* Yellow */
+  --badge-warning-foreground: oklch(0.9 0.1 90);
+
+  --badge-danger: oklch(0.3 0.2 25);            /* Red */
+  --badge-danger-foreground: oklch(0.9 0.1 25);
+
+  --badge-info: oklch(0.3 0.16 230);            /* Blue */
+  --badge-info-foreground: oklch(0.9 0.1 230);
 }
 
 @theme inline {
+  /* Core Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
+
+  /* Brand Colors */
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
@@ -94,22 +193,32 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+
+  /* Alerts & Errors */
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+
+  /* Borders and Inputs */
   --color-border: var(--border);
   --color-input: var(--input);
   --color-input-background: var(--input-background);
   --color-switch-background: var(--switch-background);
   --color-ring: var(--ring);
+
+  /* Charts */
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+
+  /* Border Radius */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* Sidebar */
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);

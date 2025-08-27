@@ -2,7 +2,7 @@ import { Dashboard } from '../../components/Dashboard';
 
 function DashboardRoute() {
     return (
-        <Dashboard onNavigate={() => {}} />
+        <Dashboard />
     )
 }
 

@@ -35,7 +35,7 @@ export function Settings({ onNavigate }: { onNavigate: (page: string) => void })
   return (
     <div>
       {/* Main Content */}
-      <main className="p-6">
+      <main className="p-6 bg-background">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="mb-8">

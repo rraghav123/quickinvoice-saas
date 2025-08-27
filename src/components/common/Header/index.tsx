@@ -4,66 +4,62 @@ import {Button} from "../../ui/button.tsx";
 import {ROUTES} from "../../../Routes/routes.ts";
 import {Avatar, AvatarFallback} from "../../ui/avatar.tsx";
 
+const TABS = [{
+    label: 'Invoices',
+    route: ROUTES.DASHBOARD,
+    icon: <FileText className="w-4 h-4 mr-2" />
+}, {
+    label: 'Clients',
+    route: ROUTES.CLIENTS,
+    icon: <Users className="w-4 h-4 mr-2" />
+},{
+    label: 'Reports',
+    route: ROUTES.REPORTS,
+    icon: <BarChart3 className="w-4 h-4 mr-2" />
+},{
+    label: 'Settings',
+    route: ROUTES.SETTINGS,
+    icon: <Settings className="w-4 h-4 mr-2" />
+}]
+
 function Header() {
     const onNavigate = useNavigate();
 
     return (
-        <nav className="bg-white border-b border-gray-200 px-6 py-4">
+        <nav className="bg-sidebar border-b border-sidebar-border px-6 py-4">
             <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-8">
-                    <div className="flex items-center space-x-2">
+                    <div className="flex items-center space-x-2 cursor-default">
                         <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                            <Zap className="w-5 h-5 text-white" />
+                            <Zap className="w-5 h-5 text-muted-foreground" />
                         </div>
-                        <span className="text-xl font-semibold">QuickInvoice</span>
+                        <span className="text-xl font-semibold text-foreground">QuickInvoice</span>
                     </div>
 
                     <div className="hidden md:flex items-center space-x-6">
-                        <Button
-                            variant="ghost"
-                            className="text-primary font-medium"
-                            onClick={() => onNavigate(ROUTES.DASHBOARD)}
-                        >
-                            <FileText className="w-4 h-4 mr-2" />
-                            Invoices
-                        </Button>
-                        <Button
-                            variant="ghost"
-                            className="text-gray-600 hover:text-gray-900"
-                            onClick={() => onNavigate(ROUTES.CLIENTS)}
-                        >
-                            <Users className="w-4 h-4 mr-2" />
-                            Clients
-                        </Button>
-                        <Button
-                            variant="ghost"
-                            className="text-gray-600 hover:text-gray-900"
-                            onClick={() => onNavigate(ROUTES.REPORTS)}
-                        >
-                            <BarChart3 className="w-4 h-4 mr-2" />
-                            Reports
-                        </Button>
-                        <Button
-                            variant="ghost"
-                            className="text-gray-600 hover:text-gray-900"
-                            onClick={() => onNavigate(ROUTES.SETTINGS)}
-                        >
-                            <Settings className="w-4 h-4 mr-2" />
-                            Settings
-                        </Button>
+                        {TABS.map(({label, icon, route}) => (
+                            <Button
+                                variant="ghost"
+                                className="text-muted-foreground hover:text-popover-foreground cursor-pointer"
+                                onClick={() => onNavigate(route)}
+                            >
+                                {icon}
+                                {label}
+                            </Button>
+                        ))}
                     </div>
                 </div>
 
                 <div className="flex items-center space-x-4">
                     <Button
-                        className="bg-primary hover:bg-primary/90"
+                        className="bg-primary text-primary-foreground hover:bg-primary/90"
                         onClick={() => onNavigate(ROUTES.CREATE_INVOICE)}
                     >
                         <Plus className="w-4 h-4 mr-2" />
                         New Invoice
                     </Button>
-                    <Button variant="ghost" size="sm">
-                        <Bell className="w-5 h-5" />
+                    <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-popover-foreground cursor-pointer">
+                        <Bell className="w-5 h-5 " />
                     </Button>
                     <Avatar>
                         <AvatarFallback>JS</AvatarFallback>

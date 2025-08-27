@@ -10,13 +10,19 @@ const badgeVariants = cva(
     variants: {
       variant: {
         default:
-          "border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90",
+          "border-transparent bg-badge-default text-badge-default-foreground  [a&]:hover:bg-badge-default/90",
+        primary:
+           "border-transparent bg-badge-primary text-badge-primary-foreground [a&]:hover:bg-badge-primary/90",
         secondary:
-          "border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
-        destructive:
-          "border-transparent bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
-        outline:
-          "text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+          "border-transparent bg-badge-secondary text-badge-secondary-foreground [a&]:hover:bg-badge-secondary/90",
+        success:
+          "border-transparent bg-badge-success text-badge-success-foreground [a&]:hover:bg-badge-success/90",
+        warning:
+          "border-transparent bg-badge-warning text-badge-warning-foreground [a&]:hover:bg-badge-warning/90",
+        danger:
+           "border-transparent bg-badge-danger text-badge-danger-foreground [a&]:hover:bg-badge-danger/90",
+        info:
+           "border-transparent bg-badge-info text-badge-info-foreground [a&]:hover:bg-badge-info/90",
       },
     },
     defaultVariants: {
@@ -24,6 +30,16 @@ const badgeVariants = cva(
     },
   },
 );
+
+const BADGE_VARIANTS = {
+    DEFAULT: 'default',
+    PRIMARY: 'primary',
+    SECONDARY: 'secondary',
+    SUCCESS: 'success',
+    WARNING: 'warning',
+    DANGER: 'danger',
+    INFO: 'info',
+}
 
 function Badge({
   className,
@@ -43,4 +59,6 @@ function Badge({
   );
 }
 
-export { Badge, badgeVariants };
+
+
+export { Badge, BADGE_VARIANTS };

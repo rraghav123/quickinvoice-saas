@@ -1,0 +1,82 @@
+@layer utilities {
+    /* === Backgrounds === */
+    .bg-background { background-color: var(--background); }
+    .bg-secondary-background { background-color: var(--secondary-background); }
+    .bg-card { background-color: var(--card); }
+    .bg-popover { background-color: var(--popover); }
+    .bg-muted { background-color: var(--muted); }
+    .bg-accent { background-color: var(--accent); }
+    .bg-destructive { background-color: var(--destructive); }
+    .bg-sidebar { background-color: var(--sidebar); }
+
+    /* === Text colors === */
+    .text-foreground { color: var(--foreground); }
+    .text-card-foreground { color: var(--card-foreground); }
+    .text-card-secondary { color: var(--card-foreground-secondary); }
+    .text-popover-foreground { color: var(--popover-foreground); }
+    .text-primary-foreground { color: var(--primary-foreground); }
+    .text-secondary-foreground { color: var(--secondary-bg-foreground); }
+    .text-muted-foreground { color: var(--muted-foreground); }
+    .text-accent-foreground { color: var(--accent-foreground); }
+    .text-destructive-foreground { color: var(--destructive-foreground); }
+    .text-sidebar-foreground { color: var(--sidebar-foreground); }
+    .text-sidebar-primary-foreground { color: var(--sidebar-primary-foreground); }
+    .text-sidebar-accent-foreground { color: var(--sidebar-accent-foreground); }
+
+    /* === Primary / Secondary === */
+    .bg-primary { background-color: var(--primary); }
+    .text-primary { color: var(--primary); }
+    .bg-secondary { background-color: var(--secondary); }
+    .text-secondary { color: var(--secondary); }
+
+    /* === Borders & Inputs === */
+    .border-border { border-color: var(--border); }
+    .border-input { border-color: var(--input); }
+    .bg-input { background-color: var(--input); }
+    .bg-input-background { background-color: var(--input-background); }
+    .bg-switch-background { background-color: var(--switch-background); }
+    .ring-ring { --tw-ring-color: var(--ring); }
+
+    /* === Sidebar === */
+    .text-sidebar-primary { color: var(--sidebar-primary); }
+    .bg-sidebar-primary { background-color: var(--sidebar-primary); }
+    .bg-sidebar-accent { background-color: var(--sidebar-accent); }
+    .text-sidebar-accent-foreground { color: var(--sidebar-accent-foreground); }
+    .border-sidebar-border { border-color: var(--sidebar-border); }
+    .ring-sidebar-ring { --tw-ring-color: var(--sidebar-ring); }
+
+    /* === Charts === */
+    .bg-chart-1 { background-color: var(--chart-1); }
+    .bg-chart-2 { background-color: var(--chart-2); }
+    .bg-chart-3 { background-color: var(--chart-3); }
+    .bg-chart-4 { background-color: var(--chart-4); }
+    .bg-chart-5 { background-color: var(--chart-5); }
+
+    .text-chart-1 { color: var(--chart-1); }
+    .text-chart-2 { color: var(--chart-2); }
+    .text-chart-3 { color: var(--chart-3); }
+    .text-chart-4 { color: var(--chart-4); }
+    .text-chart-5 { color: var(--chart-5); }
+    /* === Badges === */
+    .bg-badge-default { background-color: var(--badge-default); }
+    .text-badge-default-foreground { color: var(--badge-default-foreground); }
+
+    .bg-badge-primary { background-color: var(--badge-primary); }
+    .text-badge-primary-foreground { color: var(--badge-primary-foreground); }
+
+    .bg-badge-secondary { background-color: var(--badge-secondary); }
+    .text-badge-secondary-foreground { color: var(--badge-secondary-foreground); }
+
+    .bg-badge-success { background-color: var(--badge-success); }
+    .text-badge-success-foreground { color: var(--badge-success-foreground); }
+
+    .bg-badge-warning { background-color: var(--badge-warning); }
+    .text-badge-warning-foreground { color: var(--badge-warning-foreground); }
+
+    .bg-badge-danger { background-color: var(--badge-danger); }
+    .text-badge-danger-foreground { color: var(--badge-danger-foreground); }
+
+    .bg-badge-info { background-color: var(--badge-info); }
+    .text-badge-info-foreground { color: var(--badge-info-foreground); }
+
+}

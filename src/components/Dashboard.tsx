@@ -43,18 +43,18 @@ const recentInvoices = [
 export function Dashboard() {
   const onNavigate = useNavigate();
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <main className="p-6">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="mb-8">
-            <h1 className="text-3xl font-bold mb-2">Dashboard</h1>
-            <p className="text-gray-600">Welcome back! Here's an overview of your invoicing activity.</p>
+            <h1 className="text-3xl font-bold mb-2 text-foreground">Dashboard</h1>
+            <p className="text-card-secondary">Welcome back! Here's an overview of your invoicing activity.</p>
           </div>
 
           {/* Metrics Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <Card className="border-0 shadow-lg">
+            <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Outstanding Invoices</CardTitle>
                 <Clock className="w-4 h-4 text-muted-foreground" />
@@ -67,7 +67,7 @@ export function Dashboard() {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-lg">
+            <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Total Paid This Month</CardTitle>
                 <DollarSign className="w-4 h-4 text-muted-foreground" />
@@ -83,7 +83,7 @@ export function Dashboard() {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-lg">
+            <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Active Clients</CardTitle>
                 <Users className="w-4 h-4 text-muted-foreground" />
@@ -99,7 +99,7 @@ export function Dashboard() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Recent Invoices */}
-            <Card className="border-0 shadow-lg">
+            <Card>
               <CardHeader className="flex flex-row items-center justify-between">
                 <div>
                   <CardTitle>Recent Invoices</CardTitle>
@@ -110,14 +110,14 @@ export function Dashboard() {
               <CardContent>
                 <div className="space-y-4">
                   {recentInvoices.map((invoice, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                    <div key={index} className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
                       <div className="flex items-center space-x-3">
                         <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
                           <FileText className="w-5 h-5 text-primary" />
                         </div>
                         <div>
                           <p className="font-medium">{invoice.id}</p>
-                          <p className="text-sm text-gray-600">{invoice.client}</p>
+                          <p className="text-sm text-grey">{invoice.client}</p>
                         </div>
                       </div>
                       <div className="text-right">
@@ -140,7 +140,7 @@ export function Dashboard() {
             </Card>
 
             {/* Quick Actions */}
-            <Card className="border-0 shadow-lg">
+            <Card>
               <CardHeader>
                 <CardTitle>Quick Actions</CardTitle>
                 <CardDescription>Common tasks to help you get started</CardDescription>
@@ -156,8 +156,8 @@ export function Dashboard() {
                       <Plus className="w-5 h-5 text-primary" />
                     </div>
                     <div className="text-left">
-                      <p className="font-medium">Create New Invoice</p>
-                      <p className="text-sm text-gray-600">Start billing your clients</p>
+                      <p className="font-medium text-foreground">Create New Invoice</p>
+                      <p className="text-sm text-card-secondary">Start billing your clients</p>
                     </div>
                   </div>
                 </Button>
@@ -172,8 +172,8 @@ export function Dashboard() {
                       <Users className="w-5 h-5 text-secondary" />
                     </div>
                     <div className="text-left">
-                      <p className="font-medium">Add New Client</p>
-                      <p className="text-sm text-gray-600">Expand your client base</p>
+                      <p className="font-medium text-foreground">Add New Client</p>
+                      <p className="text-sm text-card-secondary">Expand your client base</p>
                     </div>
                   </div>
                 </Button>
@@ -188,8 +188,8 @@ export function Dashboard() {
                       <BarChart3 className="w-5 h-5 text-accent" />
                     </div>
                     <div className="text-left">
-                      <p className="font-medium">View Reports</p>
-                      <p className="text-sm text-gray-600">Analyze your performance</p>
+                      <p className="font-medium text-foreground">View Reports</p>
+                      <p className="text-sm text-card-secondary">Analyze your performance</p>
                     </div>
                   </div>
                 </Button>

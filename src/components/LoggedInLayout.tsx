@@ -4,7 +4,7 @@ import Header from "./common/Header";
 
 function LoggedInLayout() {
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-background">
             <Header />
             <Outlet />
         </div>

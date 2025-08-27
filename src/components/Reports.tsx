@@ -52,7 +52,7 @@ export function Reports({ onNavigate }: { onNavigate: (page: string) => void }) 
   return (
     <div>
       {/* Main Content */}
-      <main className="p-6">
+      <main className="p-6 bg-background">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
