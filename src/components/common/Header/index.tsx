@@ -1,8 +1,9 @@
-import { useNavigate } from "react-router";
+import {useLocation, useNavigate} from "react-router";
 import {BarChart3, Bell, FileText, Plus, Settings, Users, Zap} from "lucide-react";
 import {Button} from "../../ui/button.tsx";
 import {ROUTES} from "../../../Routes/routes.ts";
 import {Avatar, AvatarFallback} from "../../ui/avatar.tsx";
+import { cn } from "../../ui/utils.ts";
 
 const TABS = [{
     label: 'Invoices',
@@ -24,6 +25,7 @@ const TABS = [{
 
 function Header() {
     const onNavigate = useNavigate();
+    const location = useLocation();
 
     return (
         <nav className="bg-sidebar border-b border-sidebar-border px-6 py-4">
@@ -40,7 +42,11 @@ function Header() {
                         {TABS.map(({label, icon, route}) => (
                             <Button
                                 variant="ghost"
-                                className="text-muted-foreground hover:text-popover-foreground cursor-pointer"
+                                className={cn(
+                                    'text-muted-foreground hover:text-popover-foreground cursor-pointer', {
+                                        "text-popover-foreground": location.pathname === route,
+                                    }
+                                )}
                                 onClick={() => onNavigate(route)}
                             >
                                 {icon}
