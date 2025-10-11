@@ -52,7 +52,7 @@ export function Dashboard() {
                   <CardTitle>Recent Invoices</CardTitle>
                   <CardDescription>Your latest invoicing activity</CardDescription>
                 </div>
-                <Button variant="outline" size="sm">View All</Button>
+                <Button variant="outline" size="sm" className="cursor-pointer">View All</Button>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">

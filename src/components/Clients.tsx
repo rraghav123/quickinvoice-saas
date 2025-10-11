@@ -3,7 +3,7 @@ import { Button } from "./ui/button.tsx";
 import { Input } from "./ui/input.tsx";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card.tsx";
 import { Avatar, AvatarFallback } from "./ui/avatar.tsx";
-import { Badge } from "./ui/badge.tsx";
+import { Badge, BADGE_VARIANTS } from "./ui/badge.tsx";
 import { 
   Plus,
   Search, 
@@ -111,7 +111,7 @@ export function Clients() {
               <CardContent>
                 <div className="text-2xl font-bold">{totalClients}</div>
                 <p className="text-xs text-muted-foreground">
-                  <span className="text-green-600">{activeClients} active</span>
+                  <span className="text-green-foreground">{activeClients} active</span>
                 </p>
               </CardContent>
             </Card>
@@ -124,7 +124,7 @@ export function Clients() {
               <CardContent>
                 <div className="text-2xl font-bold">${totalOutstanding.toLocaleString()}</div>
                 <p className="text-xs text-muted-foreground">
-                  <span className="text-red-600">Across {clients.filter(c => c.outstandingAmount > 0).length} clients</span>
+                  <span className="text-destructive-foreground">Across {clients.filter(c => c.outstandingAmount > 0).length} clients</span>
                 </p>
               </CardContent>
             </Card>
@@ -150,7 +150,7 @@ export function Clients() {
             <CardContent className="p-6">
               <div className="flex items-center space-x-4">
                 <div className="relative flex-1">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 w-4 h-4" />
                   <Input
                     placeholder="Search clients by name or email..."
                     value={searchTerm}
@@ -187,14 +187,14 @@ export function Clients() {
                         <div className="flex items-center space-x-3 mb-1">
                           <h3 className="font-semibold">{client.name}</h3>
                           <Badge 
-                            variant={client.status === 'active' ? 'default' : 'destructive'}
+                            variant={client.status === 'active' ? BADGE_VARIANTS.DEFAULT : BADGE_VARIANTS.DANGER}
                             className="text-xs"
                           >
                             {client.status}
                           </Badge>
                         </div>
                         
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-sm text-gray-600">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-sm text-muted-foreground">
                           <div className="flex items-center">
                             <Mail className="w-3 h-3 mr-1" />
                             {client.email}
@@ -218,7 +218,7 @@ export function Clients() {
                       </div>
                       <div>
                         <p className="text-sm text-gray-600">Outstanding</p>
-                        <p className={`font-semibold ${client.outstandingAmount > 0 ? 'text-red-600' : 'text-green-600'}`}>
+                        <p className={`font-semibold ${client.outstandingAmount > 0 ? 'text-destructive-foreground' : 'text-green-foreground'}`}>
                           ${client.outstandingAmount.toLocaleString()}
                         </p>
                       </div>

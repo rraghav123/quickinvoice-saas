@@ -5,6 +5,7 @@
   /* === App Base === */
   --background: #ffffff;                  /* Dark background (e.g., body background) */
   --foreground: oklch(0.145 0 0);                 /* Light foreground text on dark background */
+  --background-gradient: linear-gradient(90deg, #706CF9, #9B6BFF);
 
   /* === Card === */
   --card: #ffffff;                        /* Card background (same as background here) */
