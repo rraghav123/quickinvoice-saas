@@ -2,7 +2,7 @@ import { LandingPage } from '../../components/LandingPage';
 
 function LandingPageRoute() {
     return (
-        <LandingPage onNavigate={() => {}} />
+        <LandingPage />
     )
 }
 

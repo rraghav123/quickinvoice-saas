@@ -1,20 +1,10 @@
-import {
-  Plus,
-  FileText,
-  Users,
-  BarChart3,
-  DollarSign,
-  Clock,
-  TrendingUp,
-} from "lucide-react";
-import {useNavigate} from "react-router";
 
 import { Button } from "./ui/button.tsx";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card.tsx";
-import { Badge } from "./ui/badge.tsx";
-import Header from "./common/Header";
 
-import {  ROUTES } from "../Routes/routes.ts";
+import MetricsCard from "./molecules/Dashboard/MetricsCard";
+import RecentInvoices from "./molecules/Dashboard/RecentInvoices";
+import QuickAction from "./molecules/Dashboard/QuickAction";
 
 const recentInvoices = [
   {
@@ -41,7 +31,6 @@ const recentInvoices = [
 ];
 
 export function Dashboard() {
-  const onNavigate = useNavigate();
   return (
     <div className="min-h-screen bg-background">
       <main className="p-6">
@@ -53,49 +42,7 @@ export function Dashboard() {
           </div>
 
           {/* Metrics Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Outstanding Invoices</CardTitle>
-                <Clock className="w-4 h-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">$4,700.00</div>
-                <p className="text-xs text-muted-foreground">
-                  <span className="text-red-600">+2 overdue</span>
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Total Paid This Month</CardTitle>
-                <DollarSign className="w-4 h-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">$12,350.00</div>
-                <p className="text-xs text-muted-foreground">
-                  <span className="text-green-600 flex items-center">
-                    <TrendingUp className="w-3 h-3 mr-1" />
-                    +23% from last month
-                  </span>
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Active Clients</CardTitle>
-                <Users className="w-4 h-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">24</div>
-                <p className="text-xs text-muted-foreground">
-                  <span className="text-green-600">+3 new this month</span>
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+         <MetricsCard />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Recent Invoices */}
@@ -109,92 +56,13 @@ export function Dashboard() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  {recentInvoices.map((invoice, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                          <FileText className="w-5 h-5 text-primary" />
-                        </div>
-                        <div>
-                          <p className="font-medium">{invoice.id}</p>
-                          <p className="text-sm text-grey">{invoice.client}</p>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <p className="font-medium">{invoice.amount}</p>
-                        <Badge 
-                          variant={
-                            invoice.status === 'paid' ? 'default' : 
-                            invoice.status === 'pending' ? 'secondary' : 
-                            'destructive'
-                          }
-                          className="text-xs"
-                        >
-                          {invoice.status}
-                        </Badge>
-                      </div>
-                    </div>
-                  ))}
+                  {recentInvoices.map((invoice, index) => <RecentInvoices key={index} invoice={invoice} />)}
                 </div>
               </CardContent>
             </Card>
 
             {/* Quick Actions */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Quick Actions</CardTitle>
-                <CardDescription>Common tasks to help you get started</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <Button 
-                  variant="outline" 
-                  className="w-full justify-start h-auto py-4"
-                  onClick={() => onNavigate(ROUTES.CREATE_INVOICE)}
-                >
-                  <div className="flex items-center">
-                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mr-3">
-                      <Plus className="w-5 h-5 text-primary" />
-                    </div>
-                    <div className="text-left">
-                      <p className="font-medium text-foreground">Create New Invoice</p>
-                      <p className="text-sm text-card-secondary">Start billing your clients</p>
-                    </div>
-                  </div>
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="w-full justify-start h-auto py-4"
-                  onClick={() => onNavigate(ROUTES.CLIENTS)}
-                >
-                  <div className="flex items-center">
-                    <div className="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center mr-3">
-                      <Users className="w-5 h-5 text-secondary" />
-                    </div>
-                    <div className="text-left">
-                      <p className="font-medium text-foreground">Add New Client</p>
-                      <p className="text-sm text-card-secondary">Expand your client base</p>
-                    </div>
-                  </div>
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="w-full justify-start h-auto py-4"
-                  onClick={() => onNavigate(ROUTES.REPORTS)}
-                >
-                  <div className="flex items-center">
-                    <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center mr-3">
-                      <BarChart3 className="w-5 h-5 text-accent" />
-                    </div>
-                    <div className="text-left">
-                      <p className="font-medium text-foreground">View Reports</p>
-                      <p className="text-sm text-card-secondary">Analyze your performance</p>
-                    </div>
-                  </div>
-                </Button>
-              </CardContent>
-            </Card>
+            <QuickAction />
           </div>
         </div>
       </main>

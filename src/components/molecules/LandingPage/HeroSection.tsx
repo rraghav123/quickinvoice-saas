@@ -1,8 +1,11 @@
 import {Badge, BADGE_VARIANTS} from "../../ui/badge.tsx";
 import {Button} from "../../ui/button.tsx";
 import {ImageWithFallback} from "../../figma/ImageWithFallback.tsx";
+import {useModal} from "../../../Context/ModalContext.tsx";
+import SignUp from "../../Modals/SignUp";
 
 function HeroSection() {
+    const { openModal, closeModal } = useModal()
     return (
         <section className="px-6 py-20 lg:py-32 bg-background">
             <div className="max-w-7xl mx-auto">
@@ -23,12 +26,12 @@ function HeroSection() {
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button
                                 size="lg"
-                                className="bg-primary hover:bg-primary/90 text-lg px-8 py-3"
-                                onClick={() => onNavigate('dashboard')}
+                                className="bg-primary hover:bg-primary/90 text-lg px-8 py-3 cursor-pointer"
+                                onClick={() => openModal(<SignUp onClose={closeModal} />)}
                             >
                                 Start Free Trial
                             </Button>
-                            <Button variant="outline" size="lg" className="text-lg px-8 py-3">
+                            <Button variant="outline" size="lg" className="text-lg px-8 py-3 cursor-pointer">
                                 Watch Demo
                             </Button>
                         </div>

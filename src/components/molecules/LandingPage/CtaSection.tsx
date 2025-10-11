@@ -1,8 +1,9 @@
 import {Button} from "../../ui/button.tsx";
-import {useNavigate} from "react-router";
+import {useModal} from "../../../Context/ModalContext.tsx";
+import SignUp from "../../Modals/SignUp";
 
 function CTASection() {
-    const onNavigate = useNavigate()
+    const {openModal, closeModal} = useModal()
     return (
         <section className="px-6 py-20 bg-primary">
             <div className="max-w-4xl mx-auto text-center">
@@ -15,8 +16,11 @@ function CTASection() {
                 <Button
                     size="lg"
                     variant="secondary"
-                    className="bg-white text-primary hover:bg-gray-100 text-lg px-8 py-3"
-                    onClick={() => onNavigate('dashboard')}
+                    className="bg-white text-primary hover:bg-gray-100 text-lg px-8 py-3 cursor-pointer"
+                    onClick={() =>  {
+                        window.scrollTo(0, 0);
+                        openModal(<SignUp onClose={closeModal} />)
+                    }}
                 >
                     Start Your Free Trial
                 </Button>

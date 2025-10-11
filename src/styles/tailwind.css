@@ -2,6 +2,7 @@
     /* === Backgrounds === */
     .bg-background { background-color: var(--background); }
     .bg-secondary-background { background-color: var(--secondary-background); }
+    .bg-secondary-background-hover { background-color: var(--secondary-background-hover); }
     .bg-card { background-color: var(--card); }
     .bg-popover { background-color: var(--popover); }
     .bg-muted { background-color: var(--muted); }
@@ -22,6 +23,7 @@
     .text-sidebar-foreground { color: var(--sidebar-foreground); }
     .text-sidebar-primary-foreground { color: var(--sidebar-primary-foreground); }
     .text-sidebar-accent-foreground { color: var(--sidebar-accent-foreground); }
+    .text-green-foreground { color: var(--color-green-600); }
 
     /* === Primary / Secondary === */
     .bg-primary { background-color: var(--primary); }

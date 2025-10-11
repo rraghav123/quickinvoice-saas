@@ -9,6 +9,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
       <Theme appearance="dark">
         <App />
+        <div id="modal-root"></div>
       </Theme>
   </StrictMode>,
 )

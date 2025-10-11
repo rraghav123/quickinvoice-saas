@@ -43,7 +43,7 @@ const pricing = [
     }
 ];
 
-function PricingSection({ onNavigate = () => {}}) {
+function PricingSection() {
     return (
         <section id="pricing" className="px-6 py-20 bg-background">
             <div className="max-w-7xl mx-auto">
@@ -82,7 +82,6 @@ function PricingSection({ onNavigate = () => {}}) {
                                 <Button
                                     className={`w-full cursor-pointer ${plan.popular ? 'bg-primary hover:bg-primary/90' : ''}`}
                                     variant={plan.popular ? 'default' : 'outline'}
-                                    onClick={() => onNavigate('dashboard')}
                                 >
                                     Get Started
                                 </Button>

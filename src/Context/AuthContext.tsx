@@ -3,7 +3,7 @@ import {createContext, useContext, useMemo, useCallback, useState } from "react"
 const AuthContext = createContext(null);
 
 function AuthProvider({ children }: { children: React.ReactNode }) {
-    const [user, setUser] = useState(false);
+    const [user, setUser] = useState(true);
     const login = useCallback((userData) => setUser(userData), []);
     const logout = useCallback(() => setUser(null), []);
 

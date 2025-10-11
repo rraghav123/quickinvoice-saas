@@ -39,7 +39,7 @@ const BADGE_VARIANTS = {
     WARNING: 'warning',
     DANGER: 'danger',
     INFO: 'info',
-}
+} as const;
 
 function Badge({
   className,

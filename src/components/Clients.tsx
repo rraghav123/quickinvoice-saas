@@ -5,8 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/
 import { Avatar, AvatarFallback } from "./ui/avatar.tsx";
 import { Badge } from "./ui/badge.tsx";
 import { 
-  Zap, 
-  Plus, 
+  Plus,
   Search, 
   MoreHorizontal, 
   Mail, 
@@ -15,11 +14,7 @@ import {
   FileText,
   DollarSign,
   Edit,
-  Trash2,
-  Bell,
   Users,
-  BarChart3,
-  Settings
 } from "lucide-react";
 
 const clients = [
@@ -77,7 +72,7 @@ const clients = [
   }
 ];
 
-export function Clients({ onNavigate }: { onNavigate: (page: string) => void }) {
+export function Clients() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredClients = clients.filter(client =>
@@ -180,7 +175,7 @@ export function Clients({ onNavigate }: { onNavigate: (page: string) => void }) 
             <CardContent>
               <div className="space-y-4">
                 {filteredClients.map((client) => (
-                  <div key={client.id} className="flex items-center justify-between p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <div key={client.id} className="flex items-center justify-between p-6 bg-secondary-background rounded-lg dark:hover:bg-gray-800 hover:bg-gray-100 transition-colors">
                     <div className="flex items-center space-x-4 flex-1">
                       <Avatar className="w-12 h-12">
                         <AvatarFallback className="bg-primary/10 text-primary font-semibold">
